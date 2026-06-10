@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Блок 1 — Герой</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            /* ========== RESET ========== */
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            /* ========== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ ========== */
+            :root {
+                --color-bg: #fff;
+                --color-text: #111;
+                --color-accent: #d62b2b;
+                --color-accent-hover: #b82020;
+                --color-subtle: #666;
+                --color-border: #ebebeb;
+                --color-cards: #f5f5f5;
+                --color-telegram: #229ed9;
+                --color-vk: #d62b2b;
+                --radius: 8px;
+                --font-family: "Inter", sans-serif;
+            }
+
+            body {
+                font-family: var(--font-family);
+                background: var(--color-bg);
+                color: var(--color-text);
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+
+            /* ========== HERO SECTION ========== */
+            .hero {
+                width: 100%;
+                padding: clamp(40px, 6vw, 80px) 6%;
+            }
+
+            .hero__grid {
+                display: grid;
+                grid-template-columns: 1fr 45%;
+                gap: clamp(30px, 5vw, 60px);
+                align-items: start;
+            }
+
+            /* ========== ЛЕВАЯ КОЛОНКА ========== */
+            .hero__left {
+                display: flex;
+                flex-direction: column;
+                gap: clamp(18px, 2.5vw, 28px);
+            }
+
+            .hero__title {
+                font-family: var(--font-family);
+                font-weight: 900;
+                font-size: clamp(28px, 4.5vw, 56px);
+                text-transform: uppercase;
+                letter-spacing: -0.025em;
+                line-height: 1.05;
+                color: var(--color-text);
+            }
+
+            .hero__title-accent {
+                color: var(--color-accent);
+            }
+
+            .hero__subtitle {
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 1.5;
+                color: var(--color-subtle);
+                max-width: 540px;
+            }
+
+            /* Кнопка + блок консультации */
+            .hero__action-row {
+                display: flex;
+                align-items: center;
+                gap: clamp(16px, 2.5vw, 24px);
+                flex-wrap: wrap;
+            }
+
+            .hero__btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--font-family);
+                font-weight: 700;
+                font-size: clamp(14px, 1.6vw, 16px);
+                color: #fff;
+                background: var(--color-accent);
+                border: none;
+                border-radius: var(--radius);
+                padding: 13px 26px;
+                text-decoration: none;
+                white-space: nowrap;
+                transition: background 0.2s ease;
+                cursor: pointer;
+            }
+
+            .hero__btn:hover {
+                background: var(--color-accent-hover);
+            }
+
+            .hero__consult {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .hero__consult-text {
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: 13px;
+                line-height: 1.4;
+                color: var(--color-subtle);
+            }
+
+            .hero__consult-links {
+                display: flex;
+                gap: 14px;
+                align-items: center;
+            }
+
+            .hero__social-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 6px;
+                font-family: var(--font-family);
+                font-weight: 700;
+                font-size: 13px;
+                text-transform: uppercase;
+                text-decoration: none;
+                line-height: 1;
+                transition: opacity 0.2s ease;
+            }
+
+            .hero__social-link:hover {
+                opacity: 0.8;
+            }
+
+            .hero__social-link--tg {
+                color: var(--color-telegram);
+            }
+
+            .hero__social-link--vk {
+                color: var(--color-vk);
+            }
+
+            .hero__social-icon {
+                width: 18px;
+                height: 18px;
+                flex-shrink: 0;
+            }
+
+            /* ========== ПРАВАЯ КОЛОНКА ========== */
+            .hero__right {
+                position: relative;
+                width: 100%;
+                border-radius: var(--radius);
+                overflow: hidden;
+            }
+
+            .hero__photo {
+                display: block;
+                width: 100%;
+                height: 100%;
+                min-height: clamp(320px, 50vw, 520px);
+                object-fit: cover;
+                border-radius: var(--radius);
+            }
+
+            /* Полоска с бейджами поверх фото */
+            .hero__badge-strip {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                padding: 10px 0;
+            }
+
+            .hero__badge {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-family: var(--font-family);
+                font-weight: 700;
+                font-size: clamp(11px, 1.2vw, 13px);
+                color: var(--color-text);
+                text-transform: uppercase;
+                line-height: 1.2;
+                padding: 4px 8px;
+            }
+
+            .hero__badge:not(:last-child) {
+                border-right: 1px solid var(--color-border);
+            }
+
+            /* ========== ПОЛОСКА ЭКСПЕРТИЗЫ ========== */
+            .hero__expertise {
+                display: flex;
+                align-items: center;
+                gap: clamp(16px, 2.5vw, 28px);
+                padding: clamp(14px, 2vw, 20px) 0;
+                border-top: 1px solid var(--color-border);
+                border-bottom: 1px solid var(--color-border);
+                margin-top: clamp(20px, 3vw, 36px);
+            }
+
+            .hero__expertise-label {
+                font-family: var(--font-family);
+                font-weight: 700;
+                font-size: clamp(12px, 1.4vw, 14px);
+                color: var(--color-text);
+                text-transform: uppercase;
+                white-space: nowrap;
+            }
+
+            .hero__expertise-divider {
+                width: 1px;
+                height: 20px;
+                background: var(--color-border);
+                flex-shrink: 0;
+            }
+
+            .hero__expertise-items {
+                display: flex;
+                flex-wrap: wrap;
+                gap: clamp(8px, 1.5vw, 16px);
+                font-family: var(--font-family);
+                font-weight: 400;
+                font-size: clamp(11px, 1.3vw, 13px);
+                color: var(--color-subtle);
+            }
+
+            .hero__expertise-bullet {
+                color: var(--color-border);
+                font-weight: 400;
+            }
+
+            /* ========== БЕГУЩАЯ СТРОКА ========== */
+            .ticker {
+                width: 100%;
+                overflow: hidden;
+                border-top: 2px solid var(--color-text);
+                border-bottom: 2px solid var(--color-text);
+                margin-top: 0;
+            }
+
+            .ticker__track {
+                display: flex;
+                width: max-content;
+                animation: ticker-scroll 28s linear infinite;
+            }
+
+            .ticker__text {
+                font-family: var(--font-family);
+                font-weight: 800;
+                font-size: clamp(14px, 1.8vw, 18px);
+                text-transform: uppercase;
+                color: var(--color-text);
+                white-space: nowrap;
+                padding: clamp(10px, 1.5vw, 16px) 0;
+                flex-shrink: 0;
+            }
+
+            @keyframes ticker-scroll {
+                0% {
+                    transform: translateX(0);
+                }
+                100% {
+                    transform: translateX(-50%);
+                }
+            }
+
+            /* Дублирующий span для бесшовности */
+            .ticker__dup {
+                font-family: var(--font-family);
+                font-weight: 800;
+                font-size: clamp(14px, 1.8vw, 18px);
+                text-transform: uppercase;
+                color: var(--color-text);
+                white-space: nowrap;
+                padding: clamp(10px, 1.5vw, 16px) 0;
+                flex-shrink: 0;
+            }
+
+            /* ========== АДАПТИВ ========== */
+            @media (max-width: 600px) {
+                .hero__grid {
+                    grid-template-columns: 1fr;
+                }
+
+                .hero__right {
+                    order: -1;
+                }
+
+                .hero__photo {
+                    min-height: 260px;
+                }
+
+                .hero__action-row {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .hero__expertise {
+                    flex-wrap: wrap;
+                    gap: 8px;
+                }
+
+                .hero__expertise-divider {
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ==================== HERO ==================== -->
+        <section class="hero">
+            <div class="hero__grid">
+                <!-- ЛЕВАЯ КОЛОНКА -->
+                <div class="hero__left">
+                    <h1 class="hero__title">
+                        Курс по созданию
+                        <span class="hero__title-accent">сайта</span> для
+                        бизнеса
+                    </h1>
+
+                    <p class="hero__subtitle">
+                        Научитесь создавать продающий сайт на Flexbe который
+                        привлекает клиентов без рекламного бюджета. Анализ
+                        конкурентов, продающие тексты, визуал, нейросети,
+                        Авито-креатив. Онлайн по всей России.
+                    </p>
+
+                    <!-- Кнопка + консультация -->
+                    <div class="hero__action-row">
+                        <a
+                            href="https://t.me/elenach_com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="hero__btn"
+                        >
+                            Для кого этот курс
+                        </a>
+
+                        <div class="hero__consult">
+                            <span class="hero__consult-text"
+                                >Личная консультация / с Еленой Чарльзворт</span
+                            >
+                            <div class="hero__consult-links">
+                                <!-- Telegram -->
+                                <a
+                                    href="https://t.me/elenach_com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hero__social-link hero__social-link--tg"
+                                >
+                                    <svg
+                                        class="hero__social-icon"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.14-.26.26-.54.26l.19-2.69 4.895-4.423c.214-.192-.046-.298-.334-.106l-6.043 3.8-2.603-.814c-.565-.175-.577-.565.117-.835l10.18-3.924c.47-.178.885.108.738.835z"
+                                        />
+                                    </svg>
+                                    Написать в Telegram
+                                </a>
+                                <!-- VK -->
+                                <a
+                                    href="https://vk.com/elenach"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="hero__social-link hero__social-link--vk"
+                                >
+                                    <svg
+                                        class="hero__social-icon"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M15.684 0H8.316C3.724 0 0 3.724 0 8.316v7.368C0 20.276 3.724 24 8.316 24h7.368C20.276 24 24 20.276 24 15.684V8.316C24 3.724 20.276 0 15.684 0zm3.692 16.729h-1.93c-.352 0-.46-.272-.818-.617-.54-.52-1.04-1.08-1.7-1.04-.32.02-.44.18-.44.48v.82c0 .32-.14.5-.48.5-1.62.1-3.08-.74-4.16-2.04-1.72-2.06-2.9-4.84-2.9-4.98 0-.14.1-.28.36-.28h1.88c.3 0 .42.16.52.36.6 1.36 1.56 2.56 1.96 2.56.14 0 .2-.06.2-.44V9.62c-.04-.74-.44-1.08-.82-1.08-.14 0 .1-.26.46-.54.52-.44 1.4-.56 1.94-.56h.86c.44 0 .6.14.6.46v2.56c0 .44.18.6.3.6.14 0 .26-.08.52-.34.8-.92 1.38-2.34 1.38-2.34.08-.16.22-.24.5-.24h1.96c.38 0 .48.2.38.48-.44 1.84-2.08 3.56-2.34 3.86-.26.32-.36.46-.08.82.26.4 1.12 1.14 1.72 1.84.52.62.94 1.3.64 1.3z"
+                                        />
+                                    </svg>
+                                    Написать в VK
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ПРАВАЯ КОЛОНКА -->
+                <div class="hero__right">
+                    <img
+                        class="hero__photo"
+                        src="https://static.tildacdn.com/tild3762-3564-4364-b765-623635313130/ChatGPT_Image_1__202.png"
+                        alt="Елена Чарльзворт"
+                    />
+
+                    <!-- Бейджи поверх фото -->
+                    <div class="hero__badge-strip">
+                        <div class="hero__badge">3 живые встречи</div>
+                        <div class="hero__badge">Небольшая группа</div>
+                        <div class="hero__badge">Авито-креатив в подарок</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Полоска экспертизы -->
+            <div class="hero__expertise">
+                <span class="hero__expertise-label">Экспертиза автора</span>
+                <span class="hero__expertise-divider"></span>
+                <div class="hero__expertise-items">
+                    100+ САЙТОВ
+                    <span class="hero__expertise-bullet">·</span> 40+ В ТОП
+                    ЯНДЕКСА
+                    <span class="hero__expertise-bullet">·</span> БРИТАНСКАЯ ВШД
+                    <span class="hero__expertise-bullet">·</span>
+                    БЮРО UPROCK
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== БЕГУЩАЯ СТРОКА ==================== -->
+        <div class="ticker">
+            <div class="ticker__track">
+                <span class="ticker__text"
+                    >БРИТАНСКАЯ ВЫСШАЯ ШКОЛА ДИЗАЙНА · БЮРО UPROCK · ТЕКСТИЛЬНАЯ
+                    АКАДЕМИЯ · ЯНДЕКС МЕТРИКА · ЯНДЕКС ДИРЕКТ · ЗАПУСК АВИТО ·
+                    ЗАПУСК ПРОФИ.РУ · ПРОДВИЖЕНИЕ САЙТОВ ·
+                </span>
+                <span class="ticker__dup" aria-hidden="true"
+                    >БРИТАНСКАЯ ВЫСШАЯ ШКОЛА ДИЗАЙНА · БЮРО UPROCK · ТЕКСТИЛЬНАЯ
+                    АКАДЕМИЯ · ЯНДЕКС МЕТРИКА · ЯНДЕКС ДИРЕКТ · ЗАПУСК АВИТО ·
+                    ЗАПУСК ПРОФИ.РУ · ПРОДВИЖЕНИЕ САЙТОВ ·
+                </span>
+            </div>
+        </div>
+    </body>
+</html>
