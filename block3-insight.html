@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блок 3 — ИНСАЙТ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ========== ПЕРЕМЕННЫЕ ========== */
+        :root {
+            --color-bg: #fff;
+            --color-text: #111;
+            --color-accent: #d62b2b;
+            --color-accent-hover: #b82020;
+            --color-subtle: #666;
+            --color-body: #444;
+            --color-border: #ebebeb;
+            --color-cards: #f5f5f5;
+            --radius: 8px;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--color-bg);
+            color: var(--color-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========== INSIGHT SECTION ========== */
+        .insight {
+            width: 100%;
+            padding: clamp(40px, 6vw, 80px) 6%;
+        }
+
+        .insight__grid {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: clamp(32px, 5vw, 56px);
+            align-items: start;
+        }
+
+        /* ========== ЛЕВАЯ — ТЕКСТ ========== */
+        .insight__title {
+            font-family: var(--font-family);
+            font-weight: 900;
+            font-size: clamp(24px, 3.8vw, 44px);
+            text-transform: uppercase;
+            letter-spacing: -0.025em;
+            line-height: 1.05;
+            color: var(--color-text);
+            margin-bottom: clamp(16px, 2.5vw, 24px);
+        }
+
+        .insight__body {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--color-body);
+            max-width: 720px;
+        }
+
+        .insight__body p {
+            margin-bottom: 1.2em;
+        }
+
+        .insight__body p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ========== ПРАВАЯ — 3 ПУНКТА ========== */
+        .insight__steps {
+            display: flex;
+            flex-direction: column;
+            gap: clamp(16px, 2.5vw, 24px);
+            padding: clamp(20px, 3vw, 28px);
+            background: var(--color-cards);
+            border-radius: var(--radius);
+        }
+
+        .insight__step {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .insight__step-num {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-family);
+            font-weight: 900;
+            font-size: 16px;
+            color: #fff;
+            background: var(--color-accent);
+            border-radius: 50%;
+            line-height: 1;
+        }
+
+        .insight__step-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding-top: 4px;
+        }
+
+        .insight__step-title {
+            font-family: var(--font-family);
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--color-text);
+            line-height: 1.3;
+        }
+
+        .insight__step-desc {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 13px;
+            color: var(--color-subtle);
+            line-height: 1.4;
+        }
+
+        /* ========== АДАПТИВ ========== */
+        @media (max-width: 600px) {
+            .insight__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .insight__steps {
+                flex-direction: column;
+            }
+
+            .insight__title {
+                font-size: clamp(22px, 6vw, 32px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== БЛОК 3 — ИНСАЙТ ==================== -->
+<section class="insight">
+
+    <div class="insight__grid">
+
+        <!-- ЛЕВАЯ — ТЕКСТ -->
+        <div class="insight__left">
+            <h2 class="insight__title">Почему 9 из 10 сайтов малого бизнеса не приносят заявки</h2>
+
+            <div class="insight__body">
+                <p>Проблема не в платформе. Не в дизайне. Не в отсутствии бюджета на рекламу.</p>
+                <p>Проблема в том что большинство сайтов сделаны о себе — а должны быть о клиенте.</p>
+                <p>Когда человек попадает на страницу у тебя есть ровно 5 секунд. За это время он должен увидеть три вещи: это про мою проблему, этот человек умеет её решать, я понимаю что делать дальше.</p>
+                <p>Если хоть одна из трёх не сработала — он закрыл вкладку. Навсегда.</p>
+                <p>Продающий сайт для бизнеса строится по другой логике. Каждый блок — это шаг в разговоре с клиентом. Заголовок останавливает. Боль удерживает. Результат разогревает. Квиз вовлекает. Кнопка закрывает.</p>
+                <p>Именно эту механику — как сделать сайт который привлекает клиентов без рекламного бюджета — мы разбираем на курсе. На твоём конкретном бизнесе. Не на абстрактных примерах.</p>
+            </div>
+        </div>
+
+        <!-- ПРАВАЯ — 3 ПУНКТА -->
+        <div class="insight__steps">
+
+            <div class="insight__step">
+                <div class="insight__step-num">01</div>
+                <div class="insight__step-content">
+                    <span class="insight__step-title">Заголовок останавливает</span>
+                    <span class="insight__step-desc">Первая секунда решает всё. Цепляющий заголовок — единственный шанс задержать внимание.</span>
+                </div>
+            </div>
+
+            <div class="insight__step">
+                <div class="insight__step-num">02</div>
+                <div class="insight__step-content">
+                    <span class="insight__step-title">Боль удерживает</span>
+                    <span class="insight__step-desc">Клиент узнаёт себя — и понимает что ты знаешь его проблему. Доверие растёт мгновенно.</span>
+                </div>
+            </div>
+
+            <div class="insight__step">
+                <div class="insight__step-num">03</div>
+                <div class="insight__step-content">
+                    <span class="insight__step-title">Квиз закрывает</span>
+                    <span class="insight__step-desc">Вовлекает в диалог, собирает контакт, ведёт к целевому действию. Без давления.</span>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>
