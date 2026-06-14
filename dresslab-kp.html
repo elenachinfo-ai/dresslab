@@ -11,7 +11,6 @@
             rel="stylesheet"
         />
         <style>
-            /* ========== RESET ========== */
             *,
             *::before,
             *::after {
@@ -20,7 +19,6 @@
                 box-sizing: border-box;
             }
 
-            /* ========== ПЕРЕМЕННЫЕ ========== */
             :root {
                 --bg: #fdfbf8;
                 --text: #141414;
@@ -40,11 +38,9 @@
                 background: var(--bg);
                 color: var(--text);
                 -webkit-font-smoothing: antialiased;
-                -moz-osx-font-smoothing: grayscale;
                 font-weight: 400;
             }
 
-            /* ========== ОБЩИЕ БЛОКИ ========== */
             section {
                 width: 100%;
                 padding: clamp(56px, 8vw, 100px) 6%;
@@ -69,6 +65,22 @@
                 margin-bottom: clamp(14px, 2vw, 20px);
             }
 
+            .divider {
+                width: 100%;
+                height: 1px;
+                background: var(--border);
+            }
+
+            /* ========== IMG UTILS ========== */
+            .img-cover {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .img-rounded {
+                border-radius: 2px;
+            }
+
             /* ========== HERO ========== */
             .hero {
                 min-height: 100vh;
@@ -85,7 +97,6 @@
                 min-height: 100vh;
             }
 
-            .hero__visual img,
             .hero__visual video {
                 width: 100%;
                 height: 100%;
@@ -93,14 +104,7 @@
                 object-position: top;
                 position: absolute;
                 inset: 0;
-            }
-
-            .hero__visual video {
                 z-index: 1;
-            }
-
-            .hero__visual img {
-                z-index: 0;
             }
 
             .hero__visual-overlay {
@@ -156,7 +160,7 @@
                 color: var(--body);
             }
 
-            /* ========== ВИЗУАЛ-ШОУКЕЙС ========== */
+            /* ========== SHOWCASE ========== */
             .showcase {
                 background: var(--dark-bg);
                 color: #fff;
@@ -167,7 +171,6 @@
             .showcase .section__label {
                 color: var(--accent);
             }
-
             .showcase .section__title {
                 color: #fff;
                 max-width: 640px;
@@ -221,13 +224,37 @@
                 margin-top: 12px;
             }
 
-            /* ========== ЦЕЛЬ ========== */
+            /* ========== SPLIT SECTION (image + text) ========== */
+            .split {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: clamp(32px, 5vw, 64px);
+                align-items: center;
+            }
+
+            .split__img {
+                aspect-ratio: 4/5;
+                overflow: hidden;
+                border-radius: 2px;
+                background: var(--card);
+            }
+
+            .split__img img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            .split__content {
+                max-width: 520px;
+            }
+
+            /* ========== GOAL ========== */
             .goal__card {
                 background: var(--card);
                 border-radius: 2px;
                 padding: clamp(28px, 4vw, 40px);
                 border-left: 2px solid var(--accent);
-                max-width: 640px;
             }
 
             .goal__card p {
@@ -246,7 +273,7 @@
                 color: var(--text);
             }
 
-            /* ========== ТРАФИК ========== */
+            /* ========== TRAFFIC ========== */
             .traffic__grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -313,7 +340,7 @@
                 padding: 4px 10px;
             }
 
-            /* ========== КАНАЛ ========== */
+            /* ========== CHANNEL ========== */
             .channel__grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -377,7 +404,7 @@
                 color: var(--text);
             }
 
-            /* ========== ЛИДЫ — 3 ШАГА ========== */
+            /* ========== STEPS ========== */
             .steps__row {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -418,7 +445,7 @@
                 color: var(--body);
             }
 
-            /* ========== ЗАКРЫТИЕ ========== */
+            /* ========== CLOSE ========== */
             .close__grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -496,7 +523,7 @@
                 background: var(--accent);
             }
 
-            /* ========== РЕЗУЛЬТАТЫ ========== */
+            /* ========== RESULTS ========== */
             .results__grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -559,7 +586,40 @@
                 margin: 14px 0 6px;
             }
 
-            /* ========== ЭТАПЫ ========== */
+            /* ========== IMAGE BANNER ========== */
+            .img-banner {
+                position: relative;
+                overflow: hidden;
+                background: var(--dark-bg);
+                padding: clamp(56px, 8vw, 100px) 6%;
+                text-align: center;
+                color: #fff;
+            }
+
+            .img-banner__bg {
+                position: absolute;
+                inset: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.4;
+            }
+
+            .img-banner__content {
+                position: relative;
+                z-index: 1;
+                max-width: 640px;
+                margin: 0 auto;
+            }
+
+            .img-banner .section__label {
+                color: var(--accent);
+            }
+            .img-banner .section__title {
+                color: #fff;
+            }
+
+            /* ========== STAGES ========== */
             .stages__grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
@@ -614,7 +674,7 @@
                 background: var(--accent);
             }
 
-            /* ========== СУТЬ ========== */
+            /* ========== ESSENCE ========== */
             .essence {
                 background: var(--dark-bg);
                 color: #fff;
@@ -624,7 +684,6 @@
             .essence .section__title {
                 color: #fff;
             }
-
             .essence__big {
                 font-weight: 300;
                 font-size: clamp(18px, 2.5vw, 22px);
@@ -634,7 +693,7 @@
                 margin: 0 auto;
             }
 
-            /* ========== КЛЮЧЕВОЙ РЕЗУЛЬТАТ ========== */
+            /* ========== FINAL ========== */
             .result-final__grid {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
@@ -662,33 +721,23 @@
                 margin-bottom: 4px;
             }
 
-            /* ========== РАЗДЕЛИТЕЛЬ ========== */
-            .divider {
-                width: 100%;
-                height: 1px;
-                background: var(--border);
-            }
-
-            /* ========== АДАПТИВ ========== */
+            /* ========== RESPONSIVE ========== */
             @media (max-width: 768px) {
-                .hero {
+                .hero,
+                .split {
                     grid-template-columns: 1fr;
                 }
-
                 .hero__visual {
                     min-height: 50vh;
                     order: -1;
                 }
-
                 .hero__content {
                     padding: clamp(32px, 6vw, 48px) 6%;
                 }
-
                 .showcase__grid {
                     grid-template-columns: 1fr;
                     max-width: 380px;
                 }
-
                 .traffic__grid,
                 .channel__grid,
                 .steps__row,
@@ -697,12 +746,13 @@
                 .stages__grid {
                     grid-template-columns: 1fr;
                 }
-
                 .result-final__grid {
                     grid-template-columns: 1fr 1fr;
                 }
+                .split__img {
+                    aspect-ratio: 3/2;
+                }
             }
-
             @media (max-width: 480px) {
                 .result-final__grid {
                     grid-template-columns: 1fr;
@@ -711,12 +761,11 @@
         </style>
     </head>
     <body>
-        <!-- ==================== 1. HERO ==================== -->
+        <!-- ==================== HERO ==================== -->
         <section class="hero">
-            <!-- Левая половина — визуал -->
             <div class="hero__visual">
                 <video
-                    src="jpg2/video_2026-06-14_19-30-08.mp4"
+                    src="jpg2/hero.mp4"
                     autoplay
                     muted
                     loop
@@ -724,8 +773,6 @@
                 ></video>
                 <div class="hero__visual-overlay"></div>
             </div>
-
-            <!-- Правая половина — текст -->
             <div class="hero__content">
                 <div class="hero__inner">
                     <div class="hero__badge">Dresslab</div>
@@ -744,7 +791,7 @@
 
         <div class="divider"></div>
 
-        <!-- ==================== ВИЗУАЛ-ШОУКЕЙС ==================== -->
+        <!-- ==================== SHOWCASE ==================== -->
         <section class="showcase">
             <span class="section__label">Визуальный стандарт</span>
             <h2 class="section__title">
@@ -752,25 +799,20 @@
             </h2>
             <p class="showcase__desc">
                 Ни одного каталога. Только живой визуал: платье в движении, на
-                человеке, в образе. Именно такой контент мы будем использовать в
-                Telegram.
+                человеке, в образе.
             </p>
-
             <div class="showcase__grid">
                 <div class="showcase__item">
-                    <img
-                        src="ipg/photo_2026-06-14_19-15-58.jpg"
-                        alt="Dresslab — платье в образе"
-                    />
+                    <img src="ipg/photo1.jpg" alt="Образ" />
                     <div class="showcase__caption">Образ</div>
                 </div>
                 <div class="showcase__item">
-                    <img src="ipg/photo2.jpg" alt="Dresslab — деталь платья" />
+                    <img src="ipg/photo2.jpg" alt="Деталь" />
                     <div class="showcase__caption">Деталь</div>
                 </div>
                 <div class="showcase__item">
                     <video
-                        src="ipg/video_2026-06-14_19-20-56.mp4"
+                        src="ipg/video.mp4"
                         autoplay
                         muted
                         loop
@@ -783,37 +825,58 @@
 
         <div class="divider"></div>
 
-        <!-- ==================== 2. ЦЕЛЬ ==================== -->
+        <!-- ==================== GOAL (split: image + text) ==================== -->
         <section class="goal">
-            <span class="section__label">1. Цель проекта</span>
-            <h2 class="section__title">Стабильный поток заявок и продаж</h2>
-            <div class="goal__card">
-                <p>
-                    Создать
-                    <strong>стабильный поток заявок и продаж</strong> через
-                    Telegram-канал, где:
-                </p>
-                <p>→ контент формирует интерес и доверие</p>
-                <p>→ аудитория приходит из внешнего трафика</p>
-                <p>→ покупки происходят через диалог и быстрые решения</p>
+            <div class="split">
+                <div class="split__img">
+                    <img
+                        src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80"
+                        alt="Fashion"
+                    />
+                </div>
+                <div class="split__content">
+                    <span class="section__label">1. Цель проекта</span>
+                    <h2 class="section__title">
+                        Стабильный поток заявок и продаж
+                    </h2>
+                    <div class="goal__card">
+                        <p>
+                            Создать
+                            <strong>стабильный поток заявок и продаж</strong>
+                            через Telegram-канал, где:
+                        </p>
+                        <p>→ контент формирует интерес и доверие</p>
+                        <p>→ аудитория приходит из внешнего трафика</p>
+                        <p>
+                            → покупки происходят через диалог и быстрые решения
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <div class="divider"></div>
 
-        <!-- ==================== 3. ТРАФИК ==================== -->
-        <section class="traffic">
-            <span class="section__label"
-                >2. Как мы приводим трафик в Telegram</span
-            >
-            <h2 class="section__title">
-                Основной источник — визуальный перформанс-контент
-            </h2>
+        <!-- ==================== TRAFFIC (image banner) ==================== -->
+        <section class="img-banner">
+            <img
+                class="img-banner__bg"
+                src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=1400&q=80"
+                alt=""
+                loading="lazy"
+            />
+            <div class="img-banner__content">
+                <span class="section__label"
+                    >2. Как мы приводим трафик в Telegram</span
+                >
+                <h2 class="section__title">
+                    Основной источник — визуальный перформанс-контент
+                </h2>
+            </div>
+        </section>
 
-            <div
-                class="traffic__grid"
-                style="margin-top: clamp(28px, 4vw, 40px)"
-            >
+        <section class="traffic" style="padding-top: 0">
+            <div class="traffic__grid">
                 <div class="traffic__card">
                     <div class="traffic__card-icon">1</div>
                     <div class="traffic__card-body">
@@ -877,18 +940,16 @@
 
         <div class="divider"></div>
 
-        <!-- ==================== 4. КАНАЛ ==================== -->
+        <!-- ==================== CHANNEL (split) ==================== -->
         <section class="channel">
-            <span class="section__label">3. Структура Telegram-канала</span>
-            <h2 class="section__title">
-                Визуальная витрина + эмоциональный фильтр
-            </h2>
-
-            <div
-                class="channel__grid"
-                style="margin-top: clamp(24px, 3vw, 32px)"
-            >
-                <div>
+            <div class="split">
+                <div class="split__content">
+                    <span class="section__label"
+                        >3. Структура Telegram-канала</span
+                    >
+                    <h2 class="section__title">
+                        Визуальная витрина + эмоциональный фильтр
+                    </h2>
                     <p
                         style="
                             font-weight: 600;
@@ -907,29 +968,35 @@
                         <li>живые примеры / примерки</li>
                         <li>истории «забрали / купили / осталось 1»</li>
                     </ul>
+                    <div class="channel__important" style="margin-top: 20px">
+                        <h4>Важно</h4>
+                        <p>
+                            Канал НЕ выглядит как магазин. Он выглядит как:
+                            <strong
+                                >кураторская подборка / стилистическая
+                                галерея</strong
+                            >
+                        </p>
+                    </div>
                 </div>
-                <div class="channel__important">
-                    <h4>Важно</h4>
-                    <p>
-                        Канал НЕ выглядит как магазин. <br />Он выглядит как:
-                        <strong
-                            >кураторская подборка / стилистическая
-                            галерея</strong
-                        >
-                    </p>
+                <div class="split__img">
+                    <img
+                        src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=600&q=80"
+                        alt="Fashion curation"
+                        loading="lazy"
+                    />
                 </div>
             </div>
         </section>
 
         <div class="divider"></div>
 
-        <!-- ==================== 5. ЛИДЫ ==================== -->
+        <!-- ==================== LEADS ==================== -->
         <section class="leads">
             <span class="section__label"
                 >4. Как мы превращаем просмотры в лиды</span
             >
             <h2 class="section__title">Механика конверсии</h2>
-
             <div class="steps__row" style="margin-top: clamp(28px, 4vw, 40px)">
                 <div class="steps__card">
                     <div class="steps__card-num">1</div>
@@ -960,12 +1027,22 @@
 
         <div class="divider"></div>
 
-        <!-- ==================== 6. ЗАКРЫТИЕ ==================== -->
-        <section class="close">
-            <span class="section__label">5. Как закрываем в продажу</span>
-            <h2 class="section__title">Логика закрытия</h2>
+        <!-- ==================== CLOSE (image banner) ==================== -->
+        <section class="img-banner">
+            <img
+                class="img-banner__bg"
+                src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1400&q=80"
+                alt=""
+                loading="lazy"
+            />
+            <div class="img-banner__content">
+                <span class="section__label">5. Как закрываем в продажу</span>
+                <h2 class="section__title">Логика закрытия</h2>
+            </div>
+        </section>
 
-            <div class="close__grid" style="margin-top: clamp(24px, 3vw, 32px)">
+        <section class="close" style="padding-top: 0">
+            <div class="close__grid">
                 <ol class="close__flow">
                     <li>
                         <span class="close__flow-num">1</span> человек реагирует
@@ -1002,46 +1079,54 @@
 
         <div class="divider"></div>
 
-        <!-- ==================== 7. РЕЗУЛЬТАТЫ ==================== -->
+        <!-- ==================== RESULTS (split with image) ==================== -->
         <section class="results">
-            <span class="section__label">6. Ожидаемые результаты системы</span>
-            <h2 class="section__title">После выхода на стабильный контент</h2>
-
-            <div
-                class="results__grid"
-                style="margin-top: clamp(24px, 3vw, 32px)"
-            >
-                <div class="results__funnel">
-                    <h4>Воронка</h4>
-                    <div class="results__funnel-row">
-                        <span class="results__funnel-label"
-                            >Просмотры → лиды</span
-                        >
-                        <span class="results__funnel-pct">3–6%</span>
-                    </div>
-                    <div class="results__funnel-row">
-                        <span class="results__funnel-label"
-                            >Лиды → покупки</span
-                        >
-                        <span class="results__funnel-pct">10–20%</span>
+            <div class="split">
+                <div class="split__content">
+                    <span class="section__label"
+                        >6. Ожидаемые результаты системы</span
+                    >
+                    <h2 class="section__title">
+                        После выхода на стабильный контент
+                    </h2>
+                    <div class="results__grid">
+                        <div class="results__funnel">
+                            <h4>Воронка</h4>
+                            <div class="results__funnel-row">
+                                <span class="results__funnel-label"
+                                    >Просмотры → лиды</span
+                                ><span class="results__funnel-pct">3–6%</span>
+                            </div>
+                            <div class="results__funnel-row">
+                                <span class="results__funnel-label"
+                                    >Лиды → покупки</span
+                                ><span class="results__funnel-pct">10–20%</span>
+                            </div>
+                        </div>
+                        <div class="results__practical">
+                            <h4>В практическом выражении</h4>
+                            <p>В стабильной системе:</p>
+                            <div class="results__practical-big">150–250</div>
+                            <p>просмотров = 1 продажа</p>
+                        </div>
                     </div>
                 </div>
-                <div class="results__practical">
-                    <h4>В практическом выражении</h4>
-                    <p>В стабильной системе:</p>
-                    <div class="results__practical-big">150–250</div>
-                    <p>просмотров = 1 продажа</p>
+                <div class="split__img">
+                    <img
+                        src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80"
+                        alt="Fashion result"
+                        loading="lazy"
+                    />
                 </div>
             </div>
         </section>
 
         <div class="divider"></div>
 
-        <!-- ==================== 8. ЭТАПЫ ==================== -->
+        <!-- ==================== STAGES ==================== -->
         <section class="stages">
             <span class="section__label">7. Этапы запуска</span>
             <h2 class="section__title">От старта до системы</h2>
-
             <div
                 class="stages__grid"
                 style="margin-top: clamp(28px, 4vw, 40px)"
@@ -1079,30 +1164,48 @@
 
         <div class="divider"></div>
 
-        <!-- ==================== 9. СУТЬ ==================== -->
-        <section class="essence">
-            <span class="section__label" style="color: var(--accent)"
-                >8. Суть системы</span
-            >
-            <h2 class="section__title">Это не интернет-магазин</h2>
-            <p class="essence__big" style="margin-top: 24px">
-                Это — визуально-эмоциональная воронка продаж через доверие и
-                вкус.
-            </p>
-            <p
-                class="essence__big"
-                style="margin-top: 16px; color: rgba(255, 255, 255, 0.5)"
-            >
-                Канал не продаёт платья. Канал создаёт желание быть той
-                девушкой, которая это платье носит.
-            </p>
+        <!-- ==================== ESSENCE (image banner) ==================== -->
+        <section class="img-banner">
+            <img
+                class="img-banner__bg"
+                src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=1400&q=80"
+                alt=""
+                loading="lazy"
+            />
+            <div class="img-banner__content">
+                <span class="section__label">8. Суть системы</span>
+                <h2 class="section__title">Это не интернет-магазин</h2>
+                <p
+                    style="
+                        font-weight: 300;
+                        font-size: clamp(18px, 2.5vw, 22px);
+                        line-height: 1.7;
+                        color: rgba(255, 255, 255, 0.7);
+                        margin-top: 24px;
+                    "
+                >
+                    Это — визуально-эмоциональная воронка продаж через доверие и
+                    вкус.
+                </p>
+                <p
+                    style="
+                        font-weight: 300;
+                        font-size: clamp(16px, 2vw, 18px);
+                        line-height: 1.7;
+                        color: rgba(255, 255, 255, 0.45);
+                        margin-top: 16px;
+                    "
+                >
+                    Канал не продаёт платья. Канал создаёт желание быть той
+                    девушкой, которая это платье носит.
+                </p>
+            </div>
         </section>
 
-        <!-- ==================== 10. ИТОГ ==================== -->
+        <!-- ==================== FINAL ==================== -->
         <section class="result-final">
             <span class="section__label">9. Ключевой результат</span>
             <h2 class="section__title">Мы строим систему</h2>
-
             <div
                 class="result-final__grid"
                 style="margin-top: clamp(28px, 4vw, 40px)"
