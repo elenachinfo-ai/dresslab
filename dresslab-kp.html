@@ -171,14 +171,14 @@
             }
             .showcase__item-media img,
             .showcase__item-media video {
-                position: absolute;
-                inset: 0;
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
+                display: block;
             }
             .showcase__item-media video {
-                z-index: 1;
+                position: absolute;
+                inset: 0;
             }
             .showcase__item-poster {
                 position: absolute;
@@ -821,7 +821,6 @@
                 </div>
                 <div>
                     <div class="showcase__item-media">
-                        <img src="ipg/photo2.jpg" alt="" />
                         <video
                             src="ipg/video.mp4"
                             autoplay
@@ -829,7 +828,6 @@
                             loop
                             playsinline
                             webkit-playsinline
-                            disableRemotePlayback
                         ></video>
                     </div>
                     <div class="showcase__caption">Движение</div>
