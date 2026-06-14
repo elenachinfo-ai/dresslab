@@ -19,16 +19,15 @@
                 box-sizing: border-box;
             }
             :root {
-                --bg: #fdfbf8;
-                --text: #141414;
+                --bg: #fafaf8;
+                --text: #121212;
                 --accent: #b8976b;
                 --accent-dark: #9a7b52;
                 --subtle: #8a8078;
                 --body: #55504a;
                 --border: #e8e3db;
                 --card: #f5f1eb;
-                --card-alt: #f0ebe3;
-                --dark-bg: #141414;
+                --dark-bg: #121212;
                 --font: "Inter", sans-serif;
             }
             body {
@@ -40,24 +39,24 @@
             }
             section {
                 width: 100%;
-                padding: clamp(56px, 8vw, 100px) 6%;
+                padding: clamp(64px, 10vw, 120px) 6%;
             }
             .section__label {
                 display: inline-block;
                 font-weight: 600;
                 font-size: 10px;
                 text-transform: uppercase;
-                letter-spacing: 0.12em;
+                letter-spacing: 0.14em;
                 color: var(--accent);
-                margin-bottom: 16px;
+                margin-bottom: 20px;
             }
             .section__title {
                 font-weight: 600;
-                font-size: clamp(26px, 3.8vw, 42px);
+                font-size: clamp(28px, 4.2vw, 46px);
                 letter-spacing: -0.02em;
                 line-height: 1.1;
                 color: var(--text);
-                margin-bottom: clamp(14px, 2vw, 20px);
+                margin-bottom: clamp(16px, 2vw, 24px);
             }
             .divider {
                 width: 100%;
@@ -70,7 +69,6 @@
                 min-height: 100vh;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: 0;
                 padding: 0;
             }
             .hero__visual {
@@ -93,15 +91,15 @@
                 inset: 0;
                 background: linear-gradient(
                     to right,
-                    rgba(20, 20, 20, 0),
-                    rgba(20, 20, 20, 0.3)
+                    rgba(18, 18, 18, 0),
+                    rgba(18, 18, 18, 0.35)
                 );
                 z-index: 2;
             }
             .hero__content {
                 display: flex;
                 align-items: center;
-                padding: clamp(40px, 6vw, 80px);
+                padding: clamp(48px, 8vw, 96px);
             }
             .hero__inner {
                 max-width: 520px;
@@ -111,26 +109,26 @@
                 font-weight: 600;
                 font-size: 11px;
                 text-transform: uppercase;
-                letter-spacing: 0.1em;
+                letter-spacing: 0.12em;
                 color: var(--accent);
                 border: 1px solid var(--accent);
-                padding: 8px 16px;
-                margin-bottom: 28px;
+                padding: 10px 18px;
+                margin-bottom: 32px;
             }
             .hero__title {
                 font-weight: 600;
-                font-size: clamp(30px, 4.5vw, 52px);
-                letter-spacing: -0.025em;
-                line-height: 1.08;
+                font-size: clamp(32px, 5vw, 56px);
+                letter-spacing: -0.03em;
+                line-height: 1.06;
                 color: var(--text);
-                margin-bottom: 20px;
+                margin-bottom: 24px;
             }
             .hero__title span {
                 color: var(--accent);
             }
             .hero__desc {
                 font-weight: 300;
-                font-size: 17px;
+                font-size: 18px;
                 line-height: 1.7;
                 color: var(--body);
             }
@@ -139,7 +137,6 @@
             .showcase {
                 background: var(--dark-bg);
                 color: #fff;
-                padding: clamp(48px, 8vw, 88px) 6%;
                 text-align: center;
             }
             .showcase .section__label {
@@ -147,7 +144,7 @@
             }
             .showcase .section__title {
                 color: #fff;
-                max-width: 640px;
+                max-width: 680px;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -155,71 +152,103 @@
                 font-weight: 300;
                 font-size: 16px;
                 line-height: 1.7;
-                color: rgba(255, 255, 255, 0.65);
+                color: rgba(255, 255, 255, 0.6);
                 max-width: 560px;
-                margin: 0 auto clamp(32px, 5vw, 48px);
+                margin: 0 auto clamp(40px, 5vw, 56px);
             }
             .showcase__grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: clamp(12px, 2vw, 20px);
+                gap: clamp(16px, 2.5vw, 28px);
                 max-width: 1100px;
                 margin: 0 auto;
             }
             .showcase__item {
-                position: relative;
+                border-radius: 2px;
+                overflow: hidden;
+            }
+            .showcase__item-media {
                 aspect-ratio: 2/3;
                 overflow: hidden;
                 border-radius: 2px;
-                background: var(--card);
+                background: #1a1a1a;
+                position: relative;
             }
-            .showcase__item img,
-            .showcase__item video {
+            .showcase__item-media img,
+            .showcase__item-media video {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
-                background: #1a1a1a;
             }
-            .showcase__item video {
+            .showcase__item-media video {
                 position: absolute;
                 inset: 0;
             }
             .showcase__caption {
                 font-weight: 400;
-                font-size: 12px;
-                letter-spacing: 0.06em;
+                font-size: 11px;
+                letter-spacing: 0.08em;
                 text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.5);
+                color: rgba(255, 255, 255, 0.45);
                 margin-top: 12px;
+            }
+
+            /* FULL-WIDTH IMAGE */
+            .full-img {
+                width: 100%;
+                padding: 0;
+            }
+            .full-img img {
+                width: 100%;
+                display: block;
+                max-height: 70vh;
+                object-fit: cover;
+            }
+            .full-img__caption {
+                text-align: center;
+                padding: 16px 6% 0;
+                font-weight: 300;
+                font-size: 13px;
+                color: var(--subtle);
+                font-style: normal;
+                letter-spacing: 0.02em;
             }
 
             /* SPLIT */
             .split {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: clamp(32px, 5vw, 64px);
+                gap: clamp(40px, 6vw, 80px);
                 align-items: center;
             }
             .split__img {
-                overflow: hidden;
                 border-radius: 2px;
+                overflow: hidden;
                 background: var(--card);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                max-height: 500px;
+                max-height: 560px;
             }
             .split__img img {
                 width: 100%;
                 height: 100%;
                 object-fit: contain;
-                max-height: 500px;
+                max-height: 560px;
+            }
+            .split__img-caption {
+                text-align: center;
+                padding-top: 14px;
+                font-weight: 300;
+                font-size: 13px;
+                color: var(--subtle);
+                letter-spacing: 0.02em;
             }
             .split__content {
                 max-width: 520px;
             }
 
-            /* GOAL */
+            /* GOAL CARD */
             .goal__card {
                 background: var(--card);
                 border-radius: 2px;
@@ -245,29 +274,25 @@
             .traffic__grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: clamp(10px, 1.5vw, 16px);
+                gap: clamp(12px, 1.5vw, 18px);
             }
             .traffic__card {
                 background: var(--card);
                 border-radius: 2px;
-                padding: clamp(24px, 3vw, 32px);
+                padding: clamp(24px, 3vw, 36px);
                 display: flex;
-                gap: 16px;
+                gap: 18px;
                 align-items: flex-start;
-                transition: background 0.2s;
-            }
-            .traffic__card:hover {
-                background: var(--card-alt);
             }
             .traffic__card-icon {
-                width: 36px;
-                height: 36px;
+                width: 40px;
+                height: 40px;
                 flex-shrink: 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 font-weight: 600;
-                font-size: 15px;
+                font-size: 16px;
                 color: var(--accent);
                 border: 1px solid var(--accent);
             }
@@ -280,7 +305,7 @@
             }
             .traffic__card-body p {
                 font-weight: 300;
-                font-size: 13px;
+                font-size: 14px;
                 line-height: 1.6;
                 color: var(--body);
                 margin-bottom: 6px;
@@ -301,28 +326,30 @@
                 padding: 4px 10px;
             }
 
-            /* CHANNEL */
+            /* CHANNEL LIST */
             .channel__list {
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                gap: 12px;
+                gap: 14px;
+                margin-bottom: 24px;
             }
             .channel__list li {
                 font-weight: 300;
                 font-size: 15px;
                 line-height: 1.6;
                 color: var(--body);
-                padding-left: 28px;
+                padding-left: 24px;
                 position: relative;
             }
             .channel__list li::before {
                 content: "";
                 position: absolute;
                 left: 0;
-                top: 7px;
-                width: 8px;
-                height: 1px;
+                top: 8px;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
                 background: var(--accent);
             }
             .channel__important {
@@ -330,13 +357,12 @@
                 border-radius: 2px;
                 padding: clamp(24px, 3vw, 32px);
                 border-left: 2px solid var(--accent);
-                margin-top: 20px;
             }
             .channel__important h4 {
                 font-weight: 600;
-                font-size: 12px;
+                font-size: 11px;
                 text-transform: uppercase;
-                letter-spacing: 0.1em;
+                letter-spacing: 0.12em;
                 color: var(--accent);
                 margin-bottom: 10px;
             }
@@ -355,51 +381,35 @@
             .steps__row {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: clamp(10px, 1.5vw, 16px);
+                gap: clamp(14px, 2vw, 22px);
             }
             .steps__card {
-                position: relative;
-                border-radius: 2px;
-                padding: clamp(24px, 3vw, 32px);
-                text-align: center;
-                overflow: hidden;
                 background: var(--card);
-            }
-            .steps__card-bg {
-                position: absolute;
-                inset: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 0.12;
-                z-index: 0;
-            }
-            .steps__card > * {
-                position: relative;
-                z-index: 1;
+                border-radius: 2px;
+                padding: clamp(28px, 3vw, 40px);
+                text-align: center;
             }
             .steps__card-num {
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
-                width: 40px;
-                height: 40px;
+                width: 44px;
+                height: 44px;
                 font-weight: 600;
-                font-size: 14px;
+                font-size: 15px;
                 color: var(--accent);
                 border: 1px solid var(--accent);
-                margin-bottom: 16px;
-                background: var(--bg);
+                margin-bottom: 20px;
             }
             .steps__card h3 {
                 font-weight: 600;
-                font-size: 15px;
+                font-size: 16px;
                 color: var(--text);
-                margin-bottom: 10px;
+                margin-bottom: 12px;
             }
             .steps__card p {
                 font-weight: 300;
-                font-size: 13px;
+                font-size: 14px;
                 line-height: 1.6;
                 color: var(--body);
             }
@@ -408,57 +418,57 @@
             .close__grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: clamp(14px, 2vw, 20px);
+                gap: clamp(20px, 3vw, 32px);
             }
             .close__flow {
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                gap: 14px;
+                gap: 16px;
             }
             .close__flow li {
                 display: flex;
-                gap: 16px;
+                gap: 18px;
                 align-items: flex-start;
                 font-weight: 300;
-                font-size: 15px;
+                font-size: 16px;
                 line-height: 1.6;
                 color: var(--body);
             }
             .close__flow-num {
-                width: 22px;
-                height: 22px;
+                width: 26px;
+                height: 26px;
                 flex-shrink: 0;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 font-weight: 600;
-                font-size: 11px;
+                font-size: 12px;
                 color: var(--accent);
                 border: 1px solid var(--accent);
             }
             .close__critical {
                 background: var(--card);
                 border-radius: 2px;
-                padding: clamp(24px, 3vw, 32px);
+                padding: clamp(24px, 3vw, 36px);
             }
             .close__critical h4 {
                 font-weight: 600;
-                font-size: 12px;
+                font-size: 11px;
                 text-transform: uppercase;
-                letter-spacing: 0.1em;
+                letter-spacing: 0.12em;
                 color: var(--accent);
-                margin-bottom: 14px;
+                margin-bottom: 16px;
             }
             .close__critical-list {
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                gap: 10px;
+                gap: 12px;
             }
             .close__critical-list li {
                 font-weight: 300;
-                font-size: 14px;
+                font-size: 15px;
                 line-height: 1.6;
                 color: var(--body);
                 padding-left: 24px;
@@ -469,8 +479,9 @@
                 position: absolute;
                 left: 0;
                 top: 8px;
-                width: 8px;
-                height: 1px;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
                 background: var(--accent);
             }
 
@@ -478,28 +489,28 @@
             .results__grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                gap: clamp(12px, 2vw, 20px);
+                gap: clamp(14px, 2vw, 22px);
             }
             .results__funnel,
             .results__practical {
                 background: var(--card);
                 border-radius: 2px;
-                padding: clamp(24px, 3vw, 32px);
+                padding: clamp(24px, 3vw, 36px);
             }
             .results__funnel h4,
             .results__practical h4 {
                 font-weight: 600;
-                font-size: 12px;
+                font-size: 11px;
                 text-transform: uppercase;
-                letter-spacing: 0.1em;
+                letter-spacing: 0.12em;
                 color: var(--accent);
-                margin-bottom: 16px;
+                margin-bottom: 18px;
             }
             .results__funnel-row {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 12px 0;
+                padding: 14px 0;
                 border-bottom: 1px solid var(--border);
             }
             .results__funnel-row:last-child {
@@ -507,26 +518,26 @@
             }
             .results__funnel-label {
                 font-weight: 300;
-                font-size: 15px;
+                font-size: 16px;
                 color: var(--body);
             }
             .results__funnel-pct {
                 font-weight: 600;
-                font-size: 20px;
+                font-size: 22px;
                 color: var(--accent);
             }
             .results__practical p {
                 font-weight: 300;
-                font-size: 15px;
+                font-size: 16px;
                 line-height: 1.7;
                 color: var(--body);
             }
             .results__practical-big {
                 font-weight: 600;
-                font-size: 36px;
+                font-size: 40px;
                 color: var(--accent);
                 line-height: 1;
-                margin: 14px 0 6px;
+                margin: 16px 0 6px;
             }
 
             /* IMAGE BANNER */
@@ -534,7 +545,7 @@
                 position: relative;
                 overflow: hidden;
                 background: var(--dark-bg);
-                padding: clamp(56px, 8vw, 100px) 6%;
+                padding: clamp(64px, 10vw, 120px) 6%;
                 text-align: center;
                 color: #fff;
             }
@@ -544,7 +555,7 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                opacity: 0.4;
+                opacity: 0.35;
             }
             .img-banner__content {
                 position: relative;
@@ -563,51 +574,36 @@
             .stages__grid {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: clamp(10px, 1.5vw, 16px);
+                gap: clamp(14px, 2vw, 22px);
             }
             .stages__card {
-                position: relative;
-                border-radius: 2px;
-                padding: clamp(24px, 3vw, 32px);
-                overflow: hidden;
                 background: var(--card);
-            }
-            .stages__card-bg {
-                position: absolute;
-                inset: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 0.1;
-                z-index: 0;
-            }
-            .stages__card > * {
-                position: relative;
-                z-index: 1;
+                border-radius: 2px;
+                padding: clamp(28px, 3vw, 40px);
             }
             .stages__card-period {
                 font-weight: 600;
                 font-size: 11px;
                 text-transform: uppercase;
-                letter-spacing: 0.1em;
+                letter-spacing: 0.12em;
                 color: var(--accent);
-                margin-bottom: 10px;
+                margin-bottom: 12px;
             }
             .stages__card h3 {
                 font-weight: 600;
-                font-size: 16px;
+                font-size: 18px;
                 color: var(--text);
-                margin-bottom: 14px;
+                margin-bottom: 16px;
             }
             .stages__card ul {
                 list-style: none;
                 display: flex;
                 flex-direction: column;
-                gap: 7px;
+                gap: 8px;
             }
             .stages__card ul li {
                 font-weight: 300;
-                font-size: 13px;
+                font-size: 14px;
                 line-height: 1.6;
                 color: var(--body);
                 padding-left: 18px;
@@ -623,30 +619,6 @@
                 background: var(--accent);
             }
 
-            /* GALLERY */
-            .gallery {
-                text-align: center;
-            }
-            .gallery__grid {
-                display: grid;
-                grid-template-columns: repeat(6, 1fr);
-                gap: clamp(6px, 1vw, 10px);
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-            .gallery__item {
-                border-radius: 2px;
-                overflow: hidden;
-                background: var(--card);
-            }
-            .gallery__item img {
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                display: block;
-                min-height: 120px;
-            }
-
             /* ESSENCE */
             .essence {
                 background: var(--dark-bg);
@@ -658,10 +630,10 @@
             }
             .essence__big {
                 font-weight: 300;
-                font-size: clamp(18px, 2.5vw, 22px);
+                font-size: clamp(20px, 2.8vw, 24px);
                 line-height: 1.7;
                 color: rgba(255, 255, 255, 0.7);
-                max-width: 560px;
+                max-width: 600px;
                 margin: 0 auto;
             }
 
@@ -669,28 +641,15 @@
             .result-final__grid {
                 display: grid;
                 grid-template-columns: repeat(4, 1fr);
-                gap: clamp(10px, 1.5vw, 16px);
+                gap: clamp(12px, 1.5vw, 18px);
             }
             .result-final__item {
-                position: relative;
                 text-align: center;
-                padding: clamp(20px, 3vw, 28px);
+                padding: clamp(24px, 3vw, 36px);
                 background: var(--card);
                 border-radius: 2px;
-                overflow: hidden;
-            }
-            .result-final__item-bg {
-                position: absolute;
-                inset: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                opacity: 0.08;
-                z-index: 0;
             }
             .result-final__item p {
-                position: relative;
-                z-index: 1;
                 font-weight: 300;
                 font-size: 14px;
                 line-height: 1.6;
@@ -700,25 +659,47 @@
                 font-weight: 600;
                 color: var(--text);
                 display: block;
-                margin-bottom: 4px;
+                margin-bottom: 6px;
+                font-size: 15px;
             }
 
-            /* RESPONSIVE */
+            /* FOOTER */
+            .footer {
+                background: var(--dark-bg);
+                color: #fff;
+                text-align: center;
+                padding: clamp(48px, 8vw, 80px) 6%;
+            }
+            .footer__text {
+                font-weight: 300;
+                font-size: clamp(18px, 2.5vw, 26px);
+                letter-spacing: -0.01em;
+                color: rgba(255, 255, 255, 0.8);
+            }
+            .footer__brand {
+                font-weight: 600;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.14em;
+                color: var(--accent);
+                margin-top: 20px;
+            }
+
             @media (max-width: 768px) {
                 .hero,
                 .split {
                     grid-template-columns: 1fr;
                 }
                 .hero__visual {
-                    min-height: 50vh;
+                    min-height: 55vh;
                     order: -1;
                 }
                 .hero__content {
-                    padding: clamp(32px, 6vw, 48px) 6%;
+                    padding: clamp(36px, 6vw, 56px) 6%;
                 }
                 .showcase__grid {
                     grid-template-columns: 1fr;
-                    max-width: 380px;
+                    max-width: 400px;
                 }
                 .traffic__grid,
                 .steps__row,
@@ -730,26 +711,32 @@
                 .result-final__grid {
                     grid-template-columns: 1fr 1fr;
                 }
-                .gallery__grid {
-                    grid-template-columns: repeat(3, 1fr);
-                }
                 .split__img {
-                    max-height: 350px;
+                    max-height: 400px;
                 }
                 .split__img img {
-                    max-height: 350px;
+                    max-height: 400px;
+                }
+                .steps__card {
+                    background: var(--card) !important;
+                    color: var(--text) !important;
+                }
+                .steps__card p {
+                    color: var(--body) !important;
+                }
+                .stages__card {
+                    background: var(--card) !important;
                 }
             }
             @media (max-width: 480px) {
-                .result-final__grid,
-                .gallery__grid {
-                    grid-template-columns: 1fr 1fr;
+                .result-final__grid {
+                    grid-template-columns: 1fr;
                 }
             }
         </style>
     </head>
     <body>
-        <!-- HERO -->
+        <!-- ████████ HERO ████████ -->
         <section class="hero">
             <div class="hero__visual">
                 <video
@@ -778,7 +765,7 @@
         </section>
         <div class="divider"></div>
 
-        <!-- SHOWCASE -->
+        <!-- ████████ SHOWCASE ████████ -->
         <section class="showcase">
             <span class="section__label">Визуальный стандарт</span>
             <h2 class="section__title">
@@ -790,31 +777,40 @@
             </p>
             <div class="showcase__grid">
                 <div class="showcase__item">
-                    <img src="ipg/photo1.jpg" alt="" />
+                    <div class="showcase__item-media">
+                        <img src="ipg/photo1.jpg" alt="" />
+                    </div>
                     <div class="showcase__caption">Образ</div>
                 </div>
                 <div class="showcase__item">
-                    <img src="ipg/photo2.jpg" alt="" />
+                    <div class="showcase__item-media">
+                        <img src="ipg/photo2.jpg" alt="" />
+                    </div>
                     <div class="showcase__caption">Деталь</div>
                 </div>
                 <div class="showcase__item">
-                    <video
-                        src="ipg/video.mp4"
-                        autoplay
-                        muted
-                        loop
-                        playsinline
-                    ></video>
+                    <div class="showcase__item-media">
+                        <video
+                            src="ipg/video.mp4"
+                            autoplay
+                            muted
+                            loop
+                            playsinline
+                        ></video>
+                    </div>
                     <div class="showcase__caption">Движение</div>
                 </div>
             </div>
         </section>
         <div class="divider"></div>
 
-        <!-- GOAL -->
+        <!-- ████████ 1. GOAL ████████ -->
         <section class="goal">
             <div class="split">
-                <div class="split__img"><img src="jpg3/1.webp" alt="" /></div>
+                <div class="split__img">
+                    <img src="jpg3/1.webp" alt="" />
+                    <div class="split__img-caption">Fashion curation</div>
+                </div>
                 <div class="split__content">
                     <span class="section__label">1. Цель проекта</span>
                     <h2 class="section__title">
@@ -837,7 +833,7 @@
         </section>
         <div class="divider"></div>
 
-        <!-- TRAFFIC -->
+        <!-- ████████ 2. TRAFFIC ████████ -->
         <section class="img-banner">
             <img
                 class="img-banner__bg"
@@ -918,7 +914,17 @@
         </section>
         <div class="divider"></div>
 
-        <!-- CHANNEL -->
+        <!-- ████████ FULL IMAGE ████████ -->
+        <div class="full-img">
+            <img src="jpg3/5.webp" alt="" loading="lazy" />
+            <div class="full-img__caption">
+                Telegram как витрина доверия — кураторская подборка, а не
+                магазин
+            </div>
+        </div>
+        <div class="divider"></div>
+
+        <!-- ████████ 3. CHANNEL ████████ -->
         <section class="channel">
             <div class="split">
                 <div class="split__content">
@@ -931,11 +937,11 @@
                     <p
                         style="
                             font-weight: 600;
-                            font-size: 13px;
-                            letter-spacing: 0.08em;
+                            font-size: 12px;
+                            letter-spacing: 0.1em;
                             text-transform: uppercase;
                             color: var(--accent);
-                            margin-bottom: 14px;
+                            margin-bottom: 16px;
                         "
                     >
                         Контент внутри
@@ -959,25 +965,22 @@
                 </div>
                 <div class="split__img">
                     <img src="jpg3/3.jpg" alt="" loading="lazy" />
+                    <div class="split__img-caption">
+                        Персональный подход — стиль, а не склад
+                    </div>
                 </div>
             </div>
         </section>
         <div class="divider"></div>
 
-        <!-- LEADS with image backgrounds -->
+        <!-- ████████ 4. LEADS ████████ -->
         <section class="leads">
             <span class="section__label"
                 >4. Как мы превращаем просмотры в лиды</span
             >
             <h2 class="section__title">Механика конверсии</h2>
-            <div class="steps__row" style="margin-top: clamp(28px, 4vw, 40px)">
+            <div class="steps__row" style="margin-top: clamp(32px, 5vw, 48px)">
                 <div class="steps__card">
-                    <img
-                        class="steps__card-bg"
-                        src="jpg3/4.jpg"
-                        alt=""
-                        loading="lazy"
-                    />
                     <div class="steps__card-num">1</div>
                     <h3>Эмоциональный триггер</h3>
                     <p>
@@ -986,12 +989,6 @@
                     </p>
                 </div>
                 <div class="steps__card">
-                    <img
-                        class="steps__card-bg"
-                        src="jpg3/5.webp"
-                        alt=""
-                        loading="lazy"
-                    />
                     <div class="steps__card-num">2</div>
                     <h3>Прямое действие</h3>
                     <p>
@@ -1000,12 +997,6 @@
                     </p>
                 </div>
                 <div class="steps__card">
-                    <img
-                        class="steps__card-bg"
-                        src="jpg3/6.jpg"
-                        alt=""
-                        loading="lazy"
-                    />
                     <div class="steps__card-num">3</div>
                     <h3>Диалоговая модель</h3>
                     <p>
@@ -1017,7 +1008,7 @@
         </section>
         <div class="divider"></div>
 
-        <!-- CLOSE -->
+        <!-- ████████ 5. CLOSE ████████ -->
         <section class="img-banner">
             <img
                 class="img-banner__bg"
@@ -1067,7 +1058,17 @@
         </section>
         <div class="divider"></div>
 
-        <!-- RESULTS -->
+        <!-- ████████ FULL IMAGE ████████ -->
+        <div class="full-img">
+            <img src="jpg3/8.jpg" alt="" loading="lazy" />
+            <div class="full-img__caption">
+                Диалог создаёт доверие — именно так закрываются продажи в
+                Telegram
+            </div>
+        </div>
+        <div class="divider"></div>
+
+        <!-- ████████ 6. RESULTS ████████ -->
         <section class="results">
             <div class="split">
                 <div class="split__content">
@@ -1100,27 +1101,24 @@
                     </div>
                 </div>
                 <div class="split__img">
-                    <img src="jpg3/8.jpg" alt="" loading="lazy" />
+                    <img src="jpg3/9.jpg" alt="" loading="lazy" />
+                    <div class="split__img-caption">
+                        Результат — когда система работает сама
+                    </div>
                 </div>
             </div>
         </section>
         <div class="divider"></div>
 
-        <!-- STAGES with image backgrounds -->
+        <!-- ████████ 7. STAGES ████████ -->
         <section class="stages">
             <span class="section__label">7. Этапы запуска</span>
             <h2 class="section__title">От старта до системы</h2>
             <div
                 class="stages__grid"
-                style="margin-top: clamp(28px, 4vw, 40px)"
+                style="margin-top: clamp(32px, 5vw, 48px)"
             >
                 <div class="stages__card">
-                    <img
-                        class="stages__card-bg"
-                        src="jpg3/9.jpg"
-                        alt=""
-                        loading="lazy"
-                    />
                     <div class="stages__card-period">0–30 дней</div>
                     <h3>Этап 1 — Старт</h3>
                     <ul>
@@ -1131,12 +1129,6 @@
                     </ul>
                 </div>
                 <div class="stages__card">
-                    <img
-                        class="stages__card-bg"
-                        src="jpg3/10.png"
-                        alt=""
-                        loading="lazy"
-                    />
                     <div class="stages__card-period">1–3 месяца</div>
                     <h3>Этап 2 — Рост</h3>
                     <ul>
@@ -1146,12 +1138,6 @@
                     </ul>
                 </div>
                 <div class="stages__card">
-                    <img
-                        class="stages__card-bg"
-                        src="jpg3/11.jpg"
-                        alt=""
-                        loading="lazy"
-                    />
                     <div class="stages__card-period">Система</div>
                     <h3>Этап 3 — Система</h3>
                     <ul>
@@ -1164,11 +1150,11 @@
         </section>
         <div class="divider"></div>
 
-        <!-- ESSENCE -->
+        <!-- ████████ 8. ESSENCE ████████ -->
         <section class="img-banner">
             <img
                 class="img-banner__bg"
-                src="jpg3/12.jpg"
+                src="jpg3/17.jpeg"
                 alt=""
                 loading="lazy"
             />
@@ -1178,7 +1164,7 @@
                 <p
                     style="
                         font-weight: 300;
-                        font-size: clamp(18px, 2.5vw, 22px);
+                        font-size: clamp(20px, 2.8vw, 24px);
                         line-height: 1.7;
                         color: rgba(255, 255, 255, 0.7);
                         margin-top: 24px;
@@ -1192,7 +1178,7 @@
                         font-weight: 300;
                         font-size: clamp(16px, 2vw, 18px);
                         line-height: 1.7;
-                        color: rgba(255, 255, 255, 0.45);
+                        color: rgba(255, 255, 255, 0.4);
                         margin-top: 16px;
                     "
                 >
@@ -1202,56 +1188,32 @@
             </div>
         </section>
 
-        <!-- FINAL with image backgrounds -->
+        <!-- ████████ 9. FINAL ████████ -->
         <section class="result-final">
             <span class="section__label">9. Ключевой результат</span>
             <h2 class="section__title">Мы строим систему</h2>
             <div
                 class="result-final__grid"
-                style="margin-top: clamp(28px, 4vw, 40px)"
+                style="margin-top: clamp(32px, 5vw, 48px)"
             >
                 <div class="result-final__item">
-                    <img
-                        class="result-final__item-bg"
-                        src="jpg3/13.jpg"
-                        alt=""
-                        loading="lazy"
-                    />
                     <p>
                         <strong>Трафик</strong> приходит из короткого
                         визуального контента
                     </p>
                 </div>
                 <div class="result-final__item">
-                    <img
-                        class="result-final__item-bg"
-                        src="jpg3/14.jpg"
-                        alt=""
-                        loading="lazy"
-                    />
                     <p>
                         <strong>Telegram</strong> превращается в витрину доверия
                     </p>
                 </div>
                 <div class="result-final__item">
-                    <img
-                        class="result-final__item-bg"
-                        src="jpg3/15.jpg"
-                        alt=""
-                        loading="lazy"
-                    />
                     <p>
                         <strong>Продажи</strong> происходят через диалог, а не
                         корзину
                     </p>
                 </div>
                 <div class="result-final__item">
-                    <img
-                        class="result-final__item-bg"
-                        src="jpg3/16.webp"
-                        alt=""
-                        loading="lazy"
-                    />
                     <p>
                         <strong>Спрос</strong> создаётся не ассортиментом, а
                         ощущением выбора
@@ -1259,70 +1221,20 @@
                 </div>
             </div>
         </section>
+
+        <!-- ████████ FULL IMAGE ████████ -->
+        <div class="full-img">
+            <img src="jpg3/17.jpeg" alt="" loading="lazy" />
+            <div class="full-img__caption">
+                Dresslab — fashion-воронка, которая продаёт через доверие и вкус
+            </div>
+        </div>
         <div class="divider"></div>
 
-        <!-- GALLERY — все фото -->
-        <section class="gallery">
-            <span class="section__label">Визуальный мудборд</span>
-            <h2
-                class="section__title"
-                style="margin-bottom: clamp(24px, 4vw, 40px)"
-            >
-                Галерея образов
-            </h2>
-            <div class="gallery__grid">
-                <div class="gallery__item">
-                    <img src="jpg3/1.webp" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/2.webp" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/3.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/4.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/5.webp" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/6.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/7.jpeg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/8.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/9.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/10.png" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/11.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/12.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/13.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/14.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/15.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/16.webp" alt="" loading="lazy" />
-                </div>
-                <div class="gallery__item">
-                    <img src="jpg3/17.jpeg" alt="" loading="lazy" />
-                </div>
-            </div>
-        </section>
+        <!-- ████████ FOOTER ████████ -->
+        <footer class="footer">
+            <p class="footer__text">Спасибо за внимание!</p>
+            <p class="footer__brand">Dresslab</p>
+        </footer>
     </body>
 </html>
