@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dresslab — Система продаж платьев через Telegram</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ========== RESET ========== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ========== ПЕРЕМЕННЫЕ ========== */
+        :root {
+            --bg: #fff;
+            --text: #111;
+            --accent: #d62b2b;
+            --accent-hover: #b82020;
+            --subtle: #666;
+            --body: #444;
+            --border: #ebebeb;
+            --card: #f5f5f5;
+            --radius: 8px;
+            --font: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font);
+            background: var(--bg);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ========== ОБЩИЕ БЛОКИ ========== */
+        section {
+            width: 100%;
+            padding: clamp(40px, 6vw, 80px) 6%;
+        }
+
+        .section__label {
+            display: inline-block;
+            font-family: var(--font);
+            font-weight: 700;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .section__title {
+            font-family: var(--font);
+            font-weight: 900;
+            font-size: clamp(24px, 3.8vw, 44px);
+            text-transform: uppercase;
+            letter-spacing: -0.025em;
+            line-height: 1.05;
+            color: var(--text);
+            margin-bottom: clamp(14px, 2vw, 20px);
+        }
+
+        .section__subtitle {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--subtle);
+            max-width: 640px;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: clamp(60px, 10vw, 120px) 6%;
+        }
+
+        .hero__inner {
+            max-width: 800px;
+        }
+
+        .hero__badge {
+            display: inline-block;
+            font-family: var(--font);
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 6px 14px;
+            margin-bottom: 20px;
+        }
+
+        .hero__title {
+            font-family: var(--font);
+            font-weight: 900;
+            font-size: clamp(32px, 6vw, 64px);
+            text-transform: uppercase;
+            letter-spacing: -0.025em;
+            line-height: 1.05;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .hero__title span {
+            color: var(--accent);
+        }
+
+        .hero__desc {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--subtle);
+            max-width: 600px;
+        }
+
+        /* ========== ЦЕЛЬ ========== */
+        .goal__card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: clamp(24px, 4vw, 36px);
+            border-left: 3px solid var(--accent);
+        }
+
+        .goal__card p {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--body);
+            margin-bottom: 8px;
+        }
+
+        .goal__card p:last-child { margin-bottom: 0; }
+
+        .goal__card strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        /* ========== ТРАФИК — КАРТОЧКИ ========== */
+        .traffic__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(14px, 2vw, 20px);
+        }
+
+        .traffic__card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: clamp(20px, 3vw, 28px);
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+        }
+
+        .traffic__card-icon {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font);
+            font-weight: 900;
+            font-size: 16px;
+            color: #fff;
+        }
+
+        .traffic__card-body h3 {
+            font-family: var(--font);
+            font-weight: 700;
+            font-size: 15px;
+            line-height: 1.3;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+
+        .traffic__card-body p {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--subtle);
+            margin-bottom: 4px;
+        }
+
+        .traffic__format-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            margin-top: 6px;
+        }
+
+        .traffic__format-tags span {
+            font-family: var(--font);
+            font-weight: 500;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            color: var(--accent);
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 3px 8px;
+        }
+
+        /* ========== СТРУКТУРА КАНАЛА ========== */
+        .channel__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(14px, 2vw, 20px);
+        }
+
+        .channel__list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .channel__list li {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--body);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .channel__list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .channel__important {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: clamp(20px, 3vw, 28px);
+            border-left: 3px solid var(--accent);
+        }
+
+        .channel__important h4 {
+            font-family: var(--font);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .channel__important p {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--body);
+        }
+
+        /* ========== ЛИДЫ — 3 ШАГА ========== */
+        .steps__row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(14px, 2vw, 20px);
+        }
+
+        .steps__card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: clamp(20px, 3vw, 28px);
+            text-align: center;
+        }
+
+        .steps__card-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--accent);
+            font-family: var(--font);
+            font-weight: 900;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 14px;
+        }
+
+        .steps__card h3 {
+            font-family: var(--font);
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .steps__card p {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--subtle);
+        }
+
+        /* ========== ЗАКРЫТИЕ ПРОДАЖ ========== */
+        .close__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(14px, 2vw, 20px);
+        }
+
+        .close__flow {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .close__flow li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--body);
+        }
+
+        .close__flow-num {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font);
+            font-weight: 700;
+            font-size: 11px;
+            color: #fff;
+        }
+
+        .close__critical {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: clamp(20px, 3vw, 28px);
+        }
+
+        .close__critical h4 {
+            font-family: var(--font);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .close__critical-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .close__critical-list li {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--body);
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .close__critical-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        /* ========== РЕЗУЛЬТАТЫ ========== */
+        .results__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(16px, 2vw, 24px);
+        }
+
+        .results__funnel,
+        .results__practical {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: clamp(20px, 3vw, 28px);
+        }
+
+        .results__funnel h4,
+        .results__practical h4 {
+            font-family: var(--font);
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+
+        .results__funnel-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .results__funnel-row:last-child {
+            border-bottom: none;
+        }
+
+        .results__funnel-label {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 14px;
+            color: var(--body);
+        }
+
+        .results__funnel-pct {
+            font-family: var(--font);
+            font-weight: 900;
+            font-size: 18px;
+            color: var(--accent);
+        }
+
+        .results__practical p {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--body);
+        }
+
+        .results__practical-big {
+            font-family: var(--font);
+            font-weight: 900;
+            font-size: 32px;
+            color: var(--accent);
+            line-height: 1;
+            margin: 12px 0 4px;
+        }
+
+        /* ========== ЭТАПЫ ========== */
+        .stages__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: clamp(14px, 2vw, 20px);
+        }
+
+        .stages__card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: clamp(20px, 3vw, 28px);
+        }
+
+        .stages__card-period {
+            font-family: var(--font);
+            font-weight: 900;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stages__card h3 {
+            font-family: var(--font);
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--text);
+            margin-bottom: 12px;
+        }
+
+        .stages__card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .stages__card ul li {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--subtle);
+            padding-left: 16px;
+            position: relative;
+        }
+
+        .stages__card ul li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* ========== СУТЬ ========== */
+        .essence {
+            background: var(--text);
+            color: #fff;
+            text-align: center;
+        }
+
+        .essence .section__title {
+            color: #fff;
+        }
+
+        .essence .section__subtitle {
+            color: rgba(255,255,255,0.7);
+            margin: 0 auto;
+        }
+
+        .essence__big {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: clamp(16px, 2.5vw, 20px);
+            line-height: 1.6;
+            color: rgba(255,255,255,0.85);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ========== КЛЮЧЕВОЙ РЕЗУЛЬТАТ ========== */
+        .result-final__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: clamp(14px, 2vw, 20px);
+        }
+
+        .result-final__item {
+            text-align: center;
+            padding: clamp(16px, 2.5vw, 24px);
+            background: var(--card);
+            border-radius: var(--radius);
+        }
+
+        .result-final__item p {
+            font-family: var(--font);
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 1.5;
+            color: var(--body);
+        }
+
+        .result-final__item p strong {
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        /* ========== РАЗДЕЛИТЕЛЬ ========== */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ========== АДАПТИВ ========== */
+        @media (max-width: 600px) {
+            .traffic__grid,
+            .channel__grid,
+            .steps__row,
+            .close__grid,
+            .results__grid,
+            .stages__grid { grid-template-columns: 1fr; }
+
+            .result-final__grid { grid-template-columns: 1fr 1fr; }
+
+            .hero { min-height: auto; }
+
+            .section__title { font-size: clamp(22px, 6vw, 32px); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== 1. HERO ==================== -->
+<section class="hero">
+    <div class="hero__inner">
+        <div class="hero__badge">Система продаж</div>
+        <h1 class="hero__title">Dresslab — система продаж платьев через <span>Telegram</span></h1>
+        <p class="hero__desc">Визуально-эмоциональная воронка: контент формирует интерес и доверие, аудитория приходит из внешнего трафика, покупки происходят через диалог и быстрые решения.</p>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== 2. ЦЕЛЬ ==================== -->
+<section class="goal">
+    <span class="section__label">1. Цель проекта</span>
+    <h2 class="section__title">Стабильный поток заявок и продаж</h2>
+    <div class="goal__card">
+        <p>Создать <strong>стабильный поток заявок и продаж</strong> через Telegram-канал, где:</p>
+        <p>→ контент формирует интерес и доверие</p>
+        <p>→ аудитория приходит из внешнего трафика</p>
+        <p>→ покупки происходят через диалог и быстрые решения</p>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== 3. ТРАФИК ==================== -->
+<section class="traffic">
+    <span class="section__label">2. Как мы приводим трафик в Telegram</span>
+    <h2 class="section__title">Основной источник — визуальный перформанс-контент</h2>
+
+    <div class="traffic__grid" style="margin-top: clamp(24px, 4vw, 36px);">
+
+        <!-- 1. Instagram / Reels / TikTok -->
+        <div class="traffic__card">
+            <div class="traffic__card-icon">1</div>
+            <div class="traffic__card-body">
+                <h3>Instagram / Reels / TikTok — главный канал роста</h3>
+                <p>Мы создаём короткие видео, которые: показывают платья в движении и на человеке, передают «ощущение образа», а не просто товар, работают как fashion-кампания, а не каталог.</p>
+                <div class="traffic__format-tags">
+                    <span>образ дня</span>
+                    <span>до/после</span>
+                    <span>примерка за 5 секунд</span>
+                    <span>реакция / эмоция</span>
+                </div>
+                <p style="margin-top:6px;">→ каждый ролик ведёт в Telegram как в «закрытую витрину»</p>
+            </div>
+        </div>
+
+        <!-- 2. Pinterest -->
+        <div class="traffic__card">
+            <div class="traffic__card-icon">2</div>
+            <div class="traffic__card-body">
+                <h3>Pinterest — долгий трафик</h3>
+                <p>Публикация визуальных образов и луков. Переходы по стилю и эстетике. Формирование «вкусового следа» бренда.</p>
+            </div>
+        </div>
+
+        <!-- 3. Telegram-посевы -->
+        <div class="traffic__card">
+            <div class="traffic__card-icon">3</div>
+            <div class="traffic__card-body">
+                <h3>Telegram-посевы — быстрый старт</h3>
+                <p>Размещения в fashion / resale / lifestyle каналах. Нативные подборки («где купить платье на вечер»). Тестирование аудитории.</p>
+            </div>
+        </div>
+
+        <!-- 4. Личный контент -->
+        <div class="traffic__card">
+            <div class="traffic__card-icon">4</div>
+            <div class="traffic__card-body">
+                <h3>Личный контент / доверие</h3>
+                <p>Закулисье работы. Подборки и вкусовые решения. «Как я выбираю вещи».</p>
+                <p style="margin-top:6px;">→ усиливает конверсию из трафика в диалог</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== 4. СТРУКТУРА КАНАЛА ==================== -->
+<section class="channel">
+    <span class="section__label">3. Структура Telegram-канала</span>
+    <h2 class="section__title">Визуальная витрина + эмоциональный фильтр</h2>
+
+    <div class="channel__grid" style="margin-top: clamp(20px, 3vw, 32px);">
+        <div>
+            <p style="font-weight:700; font-size:14px; margin-bottom:12px; color:var(--text);">Контент внутри:</p>
+            <ul class="channel__list">
+                <li>посты с платьями (визуал + короткий смысл)</li>
+                <li>дропы (ограниченные подборки)</li>
+                <li>живые примеры / примерки</li>
+                <li>истории «забрали / купили / осталось 1»</li>
+            </ul>
+        </div>
+        <div class="channel__important">
+            <h4>Важно</h4>
+            <p>Канал НЕ выглядит как магазин. <br>Он выглядит как: <strong>кураторская подборка / стилистическая галерея</strong></p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== 5. ЛИДЫ ==================== -->
+<section class="leads">
+    <span class="section__label">4. Как мы превращаем просмотры в лиды</span>
+    <h2 class="section__title">Механика конверсии</h2>
+
+    <div class="steps__row" style="margin-top: clamp(24px, 4vw, 36px);">
+        <!-- 1 -->
+        <div class="steps__card">
+            <div class="steps__card-num">1</div>
+            <h3>Эмоциональный триггер</h3>
+            <p>«Это платье выбирают за 10 секунд»<br>«Остался 1 экземпляр»<br>«Идеально на вечер / событие»</p>
+        </div>
+        <!-- 2 -->
+        <div class="steps__card">
+            <div class="steps__card-num">2</div>
+            <h3>Прямое действие</h3>
+            <p>«Напиши „хочу“»<br>«Забронировать можно в личке»<br>«Скину детали и фото на тебе»</p>
+        </div>
+        <!-- 3 -->
+        <div class="steps__card">
+            <div class="steps__card-num">3</div>
+            <h3>Диалоговая модель</h3>
+            <p>Продажа происходит не через корзину, а через: переписку, подбор размера / посадки, быстрые ответы.</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== 6. ЗАКРЫТИЕ ПРОДАЖ ==================== -->
+<section class="close">
+    <span class="section__label">5. Как закрываем в продажу</span>
+    <h2 class="section__title">Логика закрытия</h2>
+
+    <div class="close__grid" style="margin-top: clamp(20px, 3vw, 32px);">
+        <ol class="close__flow">
+            <li><span class="close__flow-num">1</span> человек реагирует на визуал</li>
+            <li><span class="close__flow-num">2</span> пишет в Telegram</li>
+            <li><span class="close__flow-num">3</span> получает быстрый ответ + уточнение</li>
+            <li><span class="close__flow-num">4</span> получает ощущение дефицита и персонального подбора</li>
+            <li><span class="close__flow-num">5</span> принимает решение</li>
+        </ol>
+        <div class="close__critical">
+            <h4>Что критично для продаж</h4>
+            <ul class="close__critical-list">
+                <li>скорость ответа (до 10–15 минут)</li>
+                <li>ощущение «индивидуального подбора»</li>
+                <li>ограниченность позиции (1–2 единицы)</li>
+                <li>визуальная уверенность (фото / видео / примерка)</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== 7. РЕЗУЛЬТАТЫ ==================== -->
+<section class="results">
+    <span class="section__label">6. Ожидаемые результаты системы</span>
+    <h2 class="section__title">После выхода на стабильный контент</h2>
+
+    <div class="results__grid" style="margin-top: clamp(20px, 3vw, 32px);">
+        <div class="results__funnel">
+            <h4>Воронка</h4>
+            <div class="results__funnel-row">
+                <span class="results__funnel-label">Просмотры → лиды</span>
+                <span class="results__funnel-pct">3–6%</span>
+            </div>
+            <div class="results__funnel-row">
+                <span class="results__funnel-label">Лиды → покупки</span>
+                <span class="results__funnel-pct">10–20%</span>
+            </div>
+        </div>
+        <div class="results__practical">
+            <h4>В практическом выражении</h4>
+            <p>В стабильной системе:</p>
+            <div class="results__practical-big">150–250</div>
+            <p>просмотров = 1 продажа</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== 8. ЭТАПЫ ==================== -->
+<section class="stages">
+    <span class="section__label">7. Этапы запуска</span>
+    <h2 class="section__title">От старта до системы</h2>
+
+    <div class="stages__grid" style="margin-top: clamp(24px, 4vw, 36px);">
+        <!-- Этап 1 -->
+        <div class="stages__card">
+            <div class="stages__card-period">0–30 дней</div>
+            <h3>Этап 1 — Старт</h3>
+            <ul>
+                <li>упаковка Telegram-канала</li>
+                <li>запуск контента</li>
+                <li>первые тестовые источники трафика</li>
+                <li>получение первых лидов и продаж</li>
+            </ul>
+        </div>
+        <!-- Этап 2 -->
+        <div class="stages__card">
+            <div class="stages__card-period">1–3 месяца</div>
+            <h3>Этап 2 — Рост</h3>
+            <ul>
+                <li>масштабирование Reels / TikTok</li>
+                <li>регулярные «дропы»</li>
+                <li>стабильный поток лидов</li>
+            </ul>
+        </div>
+        <!-- Этап 3 -->
+        <div class="stages__card">
+            <div class="stages__card-period">Система</div>
+            <h3>Этап 3 — Система</h3>
+            <ul>
+                <li>повторяемые продажи</li>
+                <li>очередь на позиции</li>
+                <li>формирование бренда как fashion-куратора</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ==================== 9. СУТЬ ==================== -->
+<section class="essence">
+    <span class="section__label" style="color:rgba(255,255,255,0.6);">8. Суть системы</span>
+    <h2 class="section__title">Это не интернет-магазин</h2>
+    <p class="section__subtitle" style="margin-bottom:24px;">Это — визуально-эмоциональная воронка продаж через доверие и вкус</p>
+    <p class="essence__big">Канал не продаёт платья. Канал создаёт желание быть той девушкой, которая это платье носит.</p>
+</section>
+
+<!-- ==================== 10. КЛЮЧЕВОЙ РЕЗУЛЬТАТ ==================== -->
+<section class="result-final">
+    <span class="section__label">9. Ключевой результат</span>
+    <h2 class="section__title">Мы строим систему</h2>
+
+    <div class="result-final__grid" style="margin-top: clamp(24px, 4vw, 36px);">
+        <div class="result-final__item">
+            <p><strong>Трафик</strong> приходит из короткого визуального контента</p>
+        </div>
+        <div class="result-final__item">
+            <p><strong>Telegram</strong> превращается в витрину доверия</p>
+        </div>
+        <div class="result-final__item">
+            <p><strong>Продажи</strong> происходят через диалог, а не корзину</p>
+        </div>
+        <div class="result-final__item">
+            <p><strong>Спрос</strong> создаётся не ассортиментом, а ощущением выбора</p>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
