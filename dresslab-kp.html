@@ -205,7 +205,6 @@
                 font-weight: 300;
                 font-size: 13px;
                 color: var(--subtle);
-                letter-spacing: 0.02em;
             }
 
             /* SPLIT */
@@ -612,14 +611,35 @@
                 background: var(--accent);
             }
 
-            /* ESSENCE */
-            .essence {
-                background: var(--dark-bg);
-                color: #fff;
+            /* HIGHLIGHT */
+            .highlight {
+                font-weight: 600;
+                color: var(--accent);
+                font-size: clamp(24px, 4vw, 38px);
                 text-align: center;
+                line-height: 1.2;
+                letter-spacing: -0.02em;
+                padding: clamp(40px, 6vw, 72px) 6%;
             }
-            .essence .section__title {
-                color: #fff;
+
+            /* MOODBOARD (только неиспользуемые фото) */
+            .moodboard__grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: clamp(8px, 1.2vw, 14px);
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+            .moodboard__item {
+                border-radius: 2px;
+                overflow: hidden;
+                background: var(--card);
+                aspect-ratio: 1;
+            }
+            .moodboard__item img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
             }
 
             /* FINAL */
@@ -648,37 +668,6 @@
                 font-size: 14px;
             }
 
-            /* MOODBOARD */
-            .moodboard__grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: clamp(8px, 1.2vw, 14px);
-                max-width: 1200px;
-                margin: 0 auto;
-            }
-            .moodboard__item {
-                border-radius: 2px;
-                overflow: hidden;
-                background: var(--card);
-                aspect-ratio: 1;
-            }
-            .moodboard__item img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            /* HIGHLIGHT */
-            .highlight {
-                font-weight: 600;
-                color: var(--accent);
-                font-size: clamp(24px, 4vw, 38px);
-                text-align: center;
-                line-height: 1.2;
-                letter-spacing: -0.02em;
-                padding: clamp(40px, 6vw, 72px) 6%;
-            }
-
             /* FOOTER */
             .footer {
                 background: var(--dark-bg);
@@ -701,8 +690,16 @@
                 margin-top: 18px;
             }
 
-            /* RESPONSIVE */
+            /* ====== RESPONSIVE ====== */
             @media (max-width: 768px) {
+                section {
+                    padding: clamp(40px, 7vw, 64px) 6%;
+                }
+                .section__title {
+                    font-size: clamp(22px, 5.5vw, 30px);
+                }
+
+                /* HERO — stack */
                 .hero {
                     grid-template-columns: 1fr;
                     min-height: auto;
@@ -714,21 +711,37 @@
                 .hero__content {
                     padding: clamp(32px, 6vw, 48px) 6%;
                 }
+
+                /* SPLIT — stack, img first */
                 .split {
                     grid-template-columns: 1fr;
-                    gap: clamp(20px, 4vw, 32px);
+                    gap: clamp(24px, 4vw, 36px);
+                }
+                .split__content {
+                    order: 2;
+                }
+                .split__img-wrapper {
+                    order: 1;
                 }
                 .split__img {
-                    order: -1;
                     max-height: 360px;
                 }
                 .split__img img {
                     max-height: 360px;
                 }
+
+                /* SHOWCASE */
                 .showcase__grid {
                     grid-template-columns: 1fr;
                     max-width: 380px;
                 }
+
+                /* FULL-IMG */
+                .full-img img {
+                    max-height: 40vh;
+                }
+
+                /* GRIDS — single column */
                 .traffic__grid,
                 .steps__row,
                 .close__grid,
@@ -742,20 +755,21 @@
                 .moodboard__grid {
                     grid-template-columns: repeat(2, 1fr);
                 }
-                .full-img img {
-                    max-height: 40vh;
-                    object-fit: cover;
+
+                /* BANNERS */
+                .img-banner {
+                    padding: clamp(40px, 8vw, 64px) 6%;
                 }
-                .section__title {
-                    font-size: clamp(22px, 6vw, 30px);
+
+                /* HIGHLIGHT */
+                .highlight {
+                    padding: clamp(32px, 5vw, 48px) 6%;
+                    font-size: clamp(20px, 6vw, 28px);
                 }
             }
             @media (max-width: 480px) {
                 .result-final__grid {
                     grid-template-columns: 1fr;
-                }
-                .moodboard__grid {
-                    grid-template-columns: repeat(2, 1fr);
                 }
             }
         </style>
@@ -832,8 +846,10 @@
         <!-- ████████ 1. GOAL ████████ -->
         <section class="goal">
             <div class="split">
-                <div class="split__img">
-                    <img src="jpg3/1.webp" alt="" />
+                <div class="split__img-wrapper">
+                    <div class="split__img">
+                        <img src="jpg3/1.webp" alt="" />
+                    </div>
                     <div class="split__img-caption">Fashion curation</div>
                 </div>
                 <div class="split__content">
@@ -988,8 +1004,10 @@
                         </p>
                     </div>
                 </div>
-                <div class="split__img">
-                    <img src="jpg3/3.jpg" alt="" loading="lazy" />
+                <div class="split__img-wrapper">
+                    <div class="split__img">
+                        <img src="jpg3/3.jpg" alt="" loading="lazy" />
+                    </div>
                     <div class="split__img-caption">
                         Персональный подход — стиль, а не склад
                     </div>
@@ -1125,8 +1143,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="split__img">
-                    <img src="jpg3/6.jpg" alt="" loading="lazy" />
+                <div class="split__img-wrapper">
+                    <div class="split__img">
+                        <img src="jpg3/6.jpg" alt="" loading="lazy" />
+                    </div>
                     <div class="split__img-caption">
                         Результат — когда система работает сама
                     </div>
@@ -1216,32 +1236,11 @@
         <!-- ████████ HIGHLIGHT ████████ -->
         <div class="highlight">Фэшн-воронка</div>
 
-        <!-- ████████ MOODBOARD ████████ -->
+        <!-- ████████ MOODBOARD (уникальные фото, не из секций) ████████ -->
         <section class="moodboard" style="padding-top: 0">
             <div class="moodboard__grid">
                 <div class="moodboard__item">
-                    <img src="jpg3/1.webp" alt="" loading="lazy" />
-                </div>
-                <div class="moodboard__item">
-                    <img src="jpg3/2.webp" alt="" loading="lazy" />
-                </div>
-                <div class="moodboard__item">
-                    <img src="jpg3/3.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="moodboard__item">
-                    <img src="jpg3/4.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="moodboard__item">
                     <img src="jpg3/5.webp" alt="" loading="lazy" />
-                </div>
-                <div class="moodboard__item">
-                    <img src="jpg3/6.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="moodboard__item">
-                    <img src="jpg3/7.jpeg" alt="" loading="lazy" />
-                </div>
-                <div class="moodboard__item">
-                    <img src="jpg3/8.jpg" alt="" loading="lazy" />
                 </div>
                 <div class="moodboard__item">
                     <img src="jpg3/9.jpg" alt="" loading="lazy" />
@@ -1262,10 +1261,7 @@
                     <img src="jpg3/14.jpg" alt="" loading="lazy" />
                 </div>
                 <div class="moodboard__item">
-                    <img src="jpg3/15.jpg" alt="" loading="lazy" />
-                </div>
-                <div class="moodboard__item">
-                    <img src="jpg3/16.webp" alt="" loading="lazy" />
+                    <img src="jpg3/15.webp" alt="" loading="lazy" />
                 </div>
             </div>
         </section>
